@@ -1,5 +1,5 @@
 import Colorpicker from "../colorpicker/Colorpicker.jsx";
-
+import Fonts from "../fonts/Fonts.jsx";
 const Sidebar = ({ setLayout }) => {
   const handleOnClick = (e) => {
     setLayout(e.target.innerText.toLowerCase());
@@ -15,6 +15,9 @@ const Sidebar = ({ setLayout }) => {
       </div>
       <div className="sidebar__colorpicker">
         <Colorpicker />
+      </div>
+      <div className="sidebar__fonts">
+        <Fonts />
       </div>
     </div>
   );
