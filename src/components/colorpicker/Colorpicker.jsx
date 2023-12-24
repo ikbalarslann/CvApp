@@ -37,13 +37,10 @@ const Colorpicker = () => {
     return getComputedStyle(document.body).getPropertyValue("--resume-accent");
   });
   return (
-    <>
-      <h2>Color</h2>
-      <label className="accent-color">
-        Accent Color
-        <input type="color" value={color} onChange={handleOnChange} />
-      </label>
-    </>
+    <label className="accent-color">
+      Accent Color
+      <input type="color" value={color} onChange={handleOnChange} />
+    </label>
   );
 };
 export default Colorpicker;

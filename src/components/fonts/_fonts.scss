@@ -1,0 +1,33 @@
+.font {
+  @include flex(row);
+  gap: 1rem;
+
+  &__option {
+    @include flex;
+    align-items: center;
+    gap: 0.01rem;
+    justify-content: center;
+
+    @include square(4rem);
+    @include sidebarChild($pl: 0);
+    margin-bottom: 1.3rem;
+    padding-bottom: 0.2rem;
+
+    &:hover {
+      border: 1px solid black;
+    }
+
+    & > span {
+      font-size: 2rem;
+    }
+    &.serif {
+      font-family: "_serif";
+    }
+    &.mono {
+      font-family: "_mono";
+    }
+    &.sans {
+      font-family: "_sans";
+    }
+  }
+}
