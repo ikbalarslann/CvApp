@@ -1,60 +1,84 @@
 import React from "react";
 import { useState } from "react";
 import "../styles/main.scss";
+import data from "../data.js";
 import Sidebar from "../components/sidebar/Sidebar.jsx";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faPhone } from "@fortawesome/free-solid-svg-icons";
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+
 const Layout = () => {
   const [layout, setLayout] = useState("left");
 
   return (
-    <div className="layout-cover">
-      <Sidebar setLayout={setLayout} />
+    <section className="layout-cover">
+      <aside>
+        <Sidebar setLayout={setLayout} />
+      </aside>
       <div className={`layout ${layout}`}>
-        <div className="header">
-          <h1>Josephine Meyers</h1>
-          <div>
-            <p>Josephine.meyers@mail.co.uk</p>
-            <p>+44 3245 5521 9943</p>
-            <p>London,UK</p>
-          </div>
-        </div>
-        <div className="content">
-          <div>
-            <div>
-              <h2>Education</h2>
-              <div>
-                <div>
-                  08/2020 - present <br />
-                  New York University,US
+        <header>
+          <h1>{data.personalInfo.fullName}</h1>
+          <address>
+            <p>
+              <FontAwesomeIcon icon={faEnvelope} />
+              <span>{data.personalInfo.email}</span>
+            </p>
+            <p>
+              <FontAwesomeIcon icon={faPhone} />
+              <span>{data.personalInfo.phoneNumber}</span>
+            </p>
+            <p>
+              <FontAwesomeIcon icon={faLocationDot} />
+              <span>{data.personalInfo.location}</span>
+            </p>
+          </address>
+        </header>
+        <article className="content">
+          <h2>Education</h2>
+          {data.sections.educations.map((education) => {
+            return (
+              <div className="content__section">
+                <div className="content__section-element">
+                  <time dateTime={education.startDate}>
+                    {education.startDate + " - " + education.endDate}
+                  </time>
+                  <br />
+                  <p>{education.location}</p>
                 </div>
-                <div>
-                  <strong>London City University</strong> <br />
-                  Bachelor of Science in Computer Science
-                </div>
-              </div>
-            </div>
-            <div>
-              <h2>Professional Experience</h2>
-              <div>
-                <div>
-                  08/2020 - present <br />
-                  New York City,US
-                </div>
-                <div>
-                  <strong>Umbrella Inc.</strong> <br />
-                  UX & UI Designer <br />
-                  <p>
-                    Designed and prototyped user interface patterns for various
-                    clients in various industries, ranging from self-service
-                    apps within the telecommunications-sector to mobile games
-                    for IOS and Android
-                  </p>
+
+                <div className="content__section-element">
+                  <strong>{education.schoolName}</strong>
+                  <br />
+                  <p>{education.degree}</p>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
+            );
+          })}
+          <h2>Professional Experience</h2>
+          {data.sections.experiences.map((experience) => {
+            return (
+              <div className="content__section">
+                <div className="content__section-element">
+                  <time dateTime={experience.startDate}>
+                    {experience.startDate + " - " + experience.endDate}
+                  </time>
+                  <br />
+                  <p>{experience.location}</p>
+                </div>
+
+                <div className="content__section-element">
+                  <strong>{experience.companyName}</strong>
+                  <br />
+                  <p>{experience.positionTitle}</p>
+                  <p>{experience.description}</p>
+                </div>
+              </div>
+            );
+          })}
+        </article>
       </div>
-    </div>
+    </section>
   );
 };
 

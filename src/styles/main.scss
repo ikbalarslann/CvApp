@@ -6,7 +6,7 @@
 
 :root {
   --resume-accent: #0e374e;
-  --header-resume-color: #c4b8c4;
+  --header-resume-color: #ffffff;
   --section-resume-bg: #0e374e12;
 }
 
@@ -14,6 +14,19 @@ body {
   background-color: $main-bg-color;
   margin: 0;
   padding: 0;
+  & h1 {
+    font-size: $h1;
+  }
+  & h2 {
+    font-size: $h2;
+    text-align: center;
+  }
+  & p {
+    font-size: $h4;
+  }
+  & time {
+    font-size: $h3/1.1;
+  }
 }
 
 .layout {
@@ -37,16 +50,35 @@ body {
     padding: 10px;
   }
 }
-.header {
+header {
+  @include flex;
+  align-items: center;
+
   border-bottom: 1px solid white;
   flex: 1;
   background-color: $resume-accent;
   color: $header-resume-color;
+
+  & h1 {
+    font-size: $large;
+  }
+
+  & p {
+    font-size: $h3;
+  }
+
+  & > address {
+    @include flex();
+    //gap: 2rem;
+    & span {
+      margin-left: 1rem;
+    }
+  }
 }
 
 .content {
   border-bottom: 1px solid white;
-  flex: 2.5;
+  flex: 1;
   background-color: $content-bg-color;
   padding: 1rem 3rem;
 
@@ -54,16 +86,37 @@ body {
     background-color: $section-resume-bg;
     color: $resume-accent;
   }
+
+  &__section {
+    @include flex(row);
+    gap: 2rem;
+
+    &-element {
+      flex: 1;
+
+      & strong {
+        font-size: $h3/1.1;
+      }
+
+      & time {
+        font-size: $h4;
+      }
+    }
+  }
 }
 
 /*other layouts*/
-.layout.right > .header {
+.layout.right > header {
   order: 1;
 }
 
 .layout.top {
   flex-direction: column;
   & > .content {
-    flex: 5;
+    flex: 7;
+  }
+  & header > address {
+    @include flex(row);
+    gap: 2rem;
   }
 }

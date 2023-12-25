@@ -10,8 +10,6 @@ const Fonts = () => {
     layout.style.fontFamily = font;
   };
 
-  const bgcolor = "f5f5f5";
-
   const bg = {
     serif:
       font === "_serif" ? { backgroundColor: "#0e374e", color: "white" } : {},

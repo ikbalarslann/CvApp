@@ -12,3 +12,20 @@
   font-family: "_mono";
   src: url("../fonts/RobotoMono-Regular.ttf");
 }
+
+/* font scale */
+$base-size: 0.5rem;
+$scale: 1.2;
+
+$h6: $base-size;
+$h5: $h6 * $scale;
+$h4: $h5 * $scale;
+$h3: $h4 * $scale;
+$h2: $h3 * $scale;
+$h1: $h2 * $scale;
+
+$small: $base-size / $scale;
+$xs: $small / $scale;
+
+$large: $h1 * $scale;
+$xl: $large * $scale;
