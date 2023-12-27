@@ -2,56 +2,22 @@
   @include flex;
   gap: 1rem;
 
-  // @include sidebarChild($pl: 0);
   margin-left: 2rem;
   padding: 2rem 1rem;
   height: 31rem;
 
   &__layout {
-    @include flex;
-    @include sidebarChild;
-    background-color: $content-bg-color;
-
-    &-options {
-      @include flex($direction: row);
-      gap: 1rem;
-      justify-content: flex-start;
-
-      width: 15rem;
-      margin: 0.4rem 1rem;
-
-      &__option {
-        @include sidebarChild($pl: 0);
-        @include square(3rem);
-
-        &-label {
-          @include flex($direction: row);
-          justify-content: center;
-
-          margin-top: 0.1rem;
-        }
-      }
-
-      &__option.left {
-        @include layoutOption(right);
-      }
-      &__option.right {
-        @include layoutOption(left);
-      }
-      &__option.top {
-        @include layoutOption(bottom);
-      }
-    }
+    @include sidebarCustomizeSection;
   }
   &__colorpicker {
-    @include flex;
-    @include sidebarChild;
-    padding-bottom: 0.8rem;
-    background-color: $content-bg-color;
+    @include sidebarCustomizeSection;
   }
   &__fonts {
-    @include flex;
-    @include sidebarChild;
-    background-color: $content-bg-color;
+    @include sidebarCustomizeSection;
   }
+}
+
+.customize-section {
+  @include flex;
+  gap: 1rem;
 }

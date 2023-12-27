@@ -17,3 +17,10 @@
   width: $size;
   height: $size;
 }
+
+// complex mixins
+@mixin sidebarCustomizeSection {
+  @include flex;
+  @include sidebarChild;
+  background-color: $content-bg-color;
+}

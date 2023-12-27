@@ -1,4 +1,3 @@
-import "./_colorpicker.scss";
 import { useState } from "react";
 
 const hexToRgb = (hex) => {

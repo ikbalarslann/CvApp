@@ -1,0 +1,30 @@
+.sidebar__layout-options {
+  @include flex($direction: row);
+  gap: 1rem;
+  justify-content: flex-start;
+
+  width: 15rem;
+  margin: 0.4rem 1rem;
+
+  &__option {
+    @include sidebarChild($pl: 0);
+    @include square(3rem);
+
+    &-label {
+      @include flex($direction: row);
+      justify-content: center;
+
+      margin-top: 0.1rem;
+    }
+  }
+
+  &__option.left {
+    @include layoutOption(right);
+  }
+  &__option.right {
+    @include layoutOption(left);
+  }
+  &__option.top {
+    @include layoutOption(bottom);
+  }
+}

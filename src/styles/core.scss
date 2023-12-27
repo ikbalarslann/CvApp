@@ -1,2 +1,10 @@
-@import "../components/sidebar/_sidebar.scss";
-@import "../components/fonts/_fonts.scss";
+@import "../components/sidebar/sidebar";
+
+// customize section
+@import "../components/customize/layout/layout";
+@import "../components/customize/colorpicker/colorpicker";
+@import "../components/customize/fonts/fonts";
+
+//content section
+@import "../components/content/personal/personal";
+@import "../components/content/education/education";

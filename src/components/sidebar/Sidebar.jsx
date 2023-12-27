@@ -1,42 +1,51 @@
-import Colorpicker from "../colorpicker/Colorpicker.jsx";
-import Fonts from "../fonts/Fonts.jsx";
-const Sidebar = ({ setLayout }) => {
+import { useState } from "react";
+
+//sections
+import Customize from "../sections/Customize.jsx";
+import Content from "../sections/Content.jsx";
+
+//content section
+import Personal from "../content/personal/Personal.jsx";
+import Education from "../content/education/Education.jsx";
+
+const Sidebar = ({ setLayout, setContentData, contentData }) => {
+  const [showAddEduForm, setShowAddEduForm] = useState(false);
+  const [showContent, setShowContent] = useState(true);
+  const [formType, setFormType] = useState("add");
+  const [header, setHeader] = useState(" ");
+  const [showHeader, setShowHeader] = useState({
+    education: false,
+    experience: false,
+  });
+
+  const handleOnContentClick = () => {
+    setShowContent(true);
+  };
+  const handleOnCustomizeClick = () => {
+    setShowContent(false);
+  };
+
+  //handle
+  const handleOnHeader = (e) => {
+    console.log(e.target.innerText);
+    console.log(contentData);
+    setShowAddEduForm(true);
+    setHeader(e.target.innerText);
+    setFormType("update");
+  };
+
   return (
     <div className="sidebar">
-      <div className="sidebar__layout">
-        <h1>Layout</h1>
-        <div className="sidebar__layout-options">
-          <div>
-            <div
-              className="sidebar__layout-options__option top"
-              onClick={() => setLayout("top")}
-            ></div>
-            <div className="sidebar__layout-options__option-label">top</div>
-          </div>
-          <div>
-            <div
-              className="sidebar__layout-options__option left"
-              onClick={() => setLayout("left")}
-            ></div>
-            <div className="sidebar__layout-options__option-label">left</div>
-          </div>
-          <div>
-            <div
-              className="sidebar__layout-options__option right"
-              onClick={() => setLayout("right")}
-            ></div>
-            <div className="sidebar__layout-options__option-label">right</div>
-          </div>
-        </div>
+      <div>
+        <button onClick={handleOnContentClick}>Content</button>
+        <button onClick={handleOnCustomizeClick}>Customize</button>
       </div>
-      <div className="sidebar__colorpicker">
-        <h1>Color</h1>
-        <Colorpicker />
-      </div>
-      <div className="sidebar__fonts">
-        <h1>Fonts</h1>
-        <Fonts />
-      </div>
+
+      {showContent ? (
+        <Content setContentData={setContentData} contentData={contentData} />
+      ) : (
+        <Customize setLayout={setLayout} />
+      )}
     </div>
   );
 };
